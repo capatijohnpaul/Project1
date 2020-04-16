@@ -41,4 +41,4 @@ steps:
       echo Hello world
       
       SET PATH=packages\Tools.InnoSetup.6.0.3\tools
-      iscc /F"SampleInstaller" Project1/sample.iss
+      iscc /O"target" /F"SampleInstaller" Project1/sample.iss
