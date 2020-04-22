@@ -7,6 +7,14 @@
 trigger:
 - master
 
+resources:
+  pipelines:
+  - pipeline: capatijohnpaul.Project1   # Name of the pipeline resource
+    source: capatijohnpaul.MavenProject # Name of the triggering pipeline
+    trigger: 
+      branches:
+      - master
+
 pool:
   vmImage: 'windows-latest'
 
