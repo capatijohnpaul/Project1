@@ -41,13 +41,22 @@ steps:
 #     platform: '$(buildPlatform)'
 #     configuration: '$(buildConfiguration)'
 
-- task: DownloadPipelineArtifact@2
+# - task: DownloadPipelineArtifact@2
+#   inputs:
+#     buildType: 'specific'
+#     project: '0b5630f4-509c-4c1a-9c2d-9846b840a4ea'
+#     definition: '5'
+#     buildVersionToDownload: 'latest'
+#     targetPath: '$(Pipeline.Workspace)'
+
+- task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'specific'
     project: '0b5630f4-509c-4c1a-9c2d-9846b840a4ea'
-    definition: '5'
+    pipeline: '5'
     buildVersionToDownload: 'latest'
-    targetPath: '$(Pipeline.Workspace)'
+    downloadType: 'specific'
+    downloadPath: '$(System.ArtifactsDirectory)'
 
 - task: CmdLine@2
   inputs:
@@ -58,3 +67,4 @@ steps:
       
       SET PATH=packages\Tools.InnoSetup.6.0.3\tools
       $(Pipeline.Workspace)\demo\target\classes\iscc.bat
+
