@@ -57,4 +57,4 @@ steps:
       echo Hello world
       
       SET PATH=packages\Tools.InnoSetup.6.0.3\tools
-      $(Pipeline.Workspace)/iscc.cmd
+      $(Pipeline.Workspace)\iscc.cmd
