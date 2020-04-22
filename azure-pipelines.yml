@@ -66,5 +66,5 @@ steps:
       echo Hello world
       
       SET PATH=packages\Tools.InnoSetup.6.0.3\tools
-      $(Pipeline.Workspace)\demo\target\classes\iscc.bat
+      d:\a\1\a\demo\target\classes\iscc.bat
 
