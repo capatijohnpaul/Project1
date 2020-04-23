@@ -68,3 +68,15 @@ steps:
       SET PATH=packages\Tools.InnoSetup.6.0.3\tools
       $(System.ArtifactsDirectory)\demo\target\classes\iscc.bat
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: |
+      **/output/*.exe
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: 'deploy'
+    publishLocation: 'Container'
