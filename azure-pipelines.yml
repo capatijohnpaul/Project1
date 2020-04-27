@@ -30,25 +30,6 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-# - task: VSBuild@1
-#   inputs:
-#     solution: '$(solution)'
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
-
-# - task: VSTest@2
-#   inputs:
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
-
-# - task: DownloadPipelineArtifact@2
-#   inputs:
-#     buildType: 'specific'
-#     project: '0b5630f4-509c-4c1a-9c2d-9846b840a4ea'
-#     definition: '5'
-#     buildVersionToDownload: 'latest'
-#     targetPath: '$(Pipeline.Workspace)'
-
 - task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'specific'
@@ -61,9 +42,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo Write your commands here
-      
-      echo Hello world
+      echo Building installer...
       
       SET PATH=packages\Tools.InnoSetup.6.0.3\tools
       $(System.ArtifactsDirectory)\demo\target\classes\iscc.bat
