@@ -44,8 +44,7 @@ steps:
   inputs:
     script: |
       echo Building installer...
-      echo $(name)
-      echo $(Date:yyyyMMdd).$(Rev:r)
+      echo $(Build.BuildNumber)
       
       SET PATH=packages\Tools.InnoSetup.6.0.3\tools
       iscc /O"installer" /F"SampleInstaller" $(System.ArtifactsDirectory)\demo\target\classes\sample.iss
