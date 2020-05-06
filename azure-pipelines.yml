@@ -22,6 +22,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  mydate: $(Get-Date -Format yyyyMMdd)
 
 steps:
 - task: NuGetToolInstaller@1
@@ -45,7 +46,7 @@ steps:
       echo Building installer...
       
       SET PATH=packages\Tools.InnoSetup.6.0.3\tools
-      $(System.ArtifactsDirectory)\demo\target\classes\iscc.bat
+      iscc /O"installer" /F"SampleInstaller-$(mydate)" d:\a\1\a\demo\target\classes\sample.iss
 
 - task: CopyFiles@2
   inputs:
